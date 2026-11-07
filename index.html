@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Toystack Stage 1 Pilot</title>
+<meta name="description" content="Stage 1 Literature Search: My Approach to the Six-Week Pilot. Alisha Chaudhari, Toystack AI take-home.">
+<meta property="og:title" content="Stage 1 Literature Search: My Approach to the Six-Week Pilot">
+<meta property="og:description" content="Alisha Chaudhari | Product Manager / Client Implementation Partner take-home, Toystack AI | Nov 2026">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://alisha-19.github.io/toystack-stage1-pilot/">
+<meta property="og:image" content="https://alisha-19.github.io/toystack-stage1-pilot/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%2315181D%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22Georgia%2Cserif%22%20font-size%3D%2234%22%20font-weight%3D%22700%22%20text-anchor%3D%22middle%22%20fill%3D%22%23E3A93B%22%3ES%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap">
+<style>
+/* Same system as the WIN-CONNECT and GutIQ pages: charcoal and ivory chapters, turmeric accent, emerald callouts.
+   Every word on this page comes from the submitted PDF; only the layout is new. */
+:root{
+  --accent:#E3A93B; --bg:#15181D; --card:#1F242B; --line:#2E343D; --line-hi:#4A5360;
+  --fg:#F5F4EF; --muted:#C3C7CE; --dim:#8C929B; --sky:#E3A93B; --link:#F2C46B;
+  --display:"Fraunces", Georgia, serif; --body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif; --mono:"JetBrains Mono", Consolas, monospace;
+  color-scheme:dark;
+}
+.light{--bg:#F5F4EF; --card:#FFFFFF; --line:#E1DED5; --line-hi:#C4BFB1; --fg:#15181D; --muted:#3F454D; --dim:#767B83; --sky:#9A5F0C; --link:#2F6DB5}
+*{box-sizing:border-box}
+body{margin:0;background:#15181D;color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+section,footer{background:var(--bg);color:var(--fg)}
+a{color:var(--link)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+a:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0;letter-spacing:-.4px}
+h1{font-size:clamp(36px,5.6vw,68px);line-height:1.06}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.1}
+h3{font-size:clamp(22px,2.4vw,27px);line-height:1.25;margin:52px 0 16px;display:flex;gap:14px;align-items:baseline}
+h3 .no{font:600 14px var(--mono);color:var(--sky);letter-spacing:1px;flex:none}
+p{margin:0 0 14px;color:var(--muted);max-width:76ch}
+p b,li b,td b{color:var(--fg)}
+.eyebrow{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--sky);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--sky);opacity:.7}
+section{padding-block:84px;border-top:1px solid var(--line)}
+.head{display:flex;flex-direction:column;gap:14px;margin-bottom:8px}
+.chip{font-family:var(--mono);font-size:12px;padding:6px 12px;border:1px solid var(--line-hi);border-radius:999px;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:10px}
+
+nav{position:sticky;top:0;z-index:20;background:rgba(21,24,29,.92);backdrop-filter:blur(10px);border-bottom:1px solid #2E343D}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:13px}
+.logo{font-weight:800;letter-spacing:1.5px;font-size:15px;text-decoration:none;color:#F5F4EF;white-space:nowrap}
+.logo span{color:#E3A93B}
+.links{display:flex;gap:8px;font-size:14px;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{text-decoration:none;padding:7px 14px;border-radius:999px;border:1px solid #4A5360;color:#D9DCE1;font-weight:500;white-space:nowrap}
+.links a:hover{border-color:#E3A93B;color:#F5F4EF}
+.links a.on{background:#E3A93B;border-color:#E3A93B;color:#15181D;font-weight:600}
+
+.hero{border-top:0;padding-block:96px 80px}
+.hero .wrap{display:flex;flex-direction:column;gap:26px}
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}
+.toc a{display:flex;flex-direction:column;gap:6px;text-decoration:none;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;color:var(--fg)}
+.toc a:hover{border-color:#E3A93B}
+.toc span{font:600 12px var(--mono);letter-spacing:1px;color:var(--sky)}
+.toc b{font-size:16px;line-height:1.3}
+
+ol,ul{margin:0 0 14px;padding-left:22px;color:var(--muted);max-width:76ch}
+li{margin:6px 0}
+li::marker{color:var(--sky);font-weight:600}
+.callout{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--sky);border-radius:12px;padding:18px 20px;margin:18px 0}
+.callout p:last-child{margin-bottom:0}
+.principle{background:linear-gradient(160deg,#23684F 0%,#1A5240 100%);border:1px solid #2E7A63;border-radius:16px;padding:22px 24px;margin:18px 0;box-shadow:0 24px 60px -30px rgba(35,104,79,.7)}
+.principle p{color:#D6E7DF}.principle p b{color:#F5F4EF}
+.principle p:last-child{margin-bottom:0}
+
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:14px;margin:18px 0 22px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:15px;line-height:1.5}
+th{text-align:left;font:600 11.5px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:12px 14px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--muted)}
+td.f{color:var(--fg);font-weight:600}
+tr:last-child td{border-bottom:0}
+tr.rec td{background:rgba(227,169,59,.08)}
+.light tr.rec td{background:#FFF6E2}
+table.src{min-width:860px}
+table.wk{min-width:780px}
+table.ms{min-width:720px}
+
+figure{margin:18px 0 18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+figure svg{display:block;width:100%;height:auto}
+
+.email{background:#FFFFFF;color:#15181D;border-radius:16px;border:1px solid #3A414B;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.8);margin-top:26px;max-width:820px}
+.email .bar{display:flex;align-items:center;gap:10px;padding:12px 18px;background:#F7F6F1;border-bottom:1px solid #E1DED5;font-size:14px;color:#535961}
+.email .dots{display:flex;gap:6px}.email .dots i{width:10px;height:10px;border-radius:50%;background:#D9D5CA;display:block}
+.email .subj{padding:18px 26px 14px;border-bottom:1px solid #EDEBE4;font-size:16px}
+.email .subj b{color:#15181D}
+.email .bd{padding:22px 26px 26px}
+.email p,.email ol{color:#2A2F36;max-width:none}
+.email p b{color:#15181D}
+.email li::marker{color:#9A5F0C}
+.sig{margin:0}
+
+.refs{list-style:none;padding:0;counter-reset:r;max-width:none}
+.refs li{counter-increment:r;display:grid;grid-template-columns:42px 1fr;gap:6px;padding:9px 0;border-bottom:1px solid var(--line);margin:0;font-size:15px}
+.refs li::before{content:"[" counter(r) "]";font:600 13px var(--mono);color:var(--sky);padding-top:2px}
+.refs a{word-break:break-all}
+
+footer{padding-block:44px;border-top:1px solid var(--line)}
+footer p{font-size:14px;margin:0}
+
+@media (max-width:820px){ .toc{grid-template-columns:1fr 1fr} }
+@media (max-width:620px){
+  body{font-size:16px}
+  section{padding-block:60px}
+  .logo{display:none}
+  .links a{padding:6px 11px;font-size:13px}
+  .toc{grid-template-columns:1fr}
+  .email .subj,.email .bd{padding-left:18px;padding-right:18px}
+}
+
+/* refinement layer */
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+h3,section{scroll-margin-top:72px}
+h3{padding-top:30px;border-top:1px solid var(--line);margin-top:48px}
+#bar{position:absolute;left:0;right:0;bottom:-1px;height:2px;background:#E3A93B;transform:scaleX(0);transform-origin:left}
+.subnav{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.subnav a{display:inline-flex;gap:8px;align-items:baseline;text-decoration:none;font-size:14px;line-height:1.35;color:var(--fg);padding:7px 13px;border:1px solid var(--line-hi);border-radius:999px;background:var(--card)}
+.subnav a:hover{border-color:var(--sky)}
+.subnav span{font:600 12px var(--mono);color:var(--sky)}
+
+.journey{list-style:none;padding:0;counter-reset:j;max-width:none;margin:14px 0 24px}
+.journey li{counter-increment:j;position:relative;padding:0 0 18px 50px;margin:0;max-width:76ch}
+.journey li::before{content:counter(j);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:#15181D;color:#E3A93B;font:600 14px/32px var(--mono);text-align:center}
+.journey li::after{content:"";position:absolute;left:15px;top:36px;bottom:2px;width:2px;background:var(--line-hi)}
+.journey li:last-child{padding-bottom:0}.journey li:last-child::after{display:none}
+
+.tiers{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:none;margin:16px 0 20px}
+.tiers li{margin:0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--sky);border-radius:12px;padding:16px 18px;font-size:16px}
+.tiers li.t-strong{border-top-color:#1F7A5C}.tiers li.t-medium{border-top-color:#E3A93B}.tiers li.t-weak{border-top-color:#A9A79F}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card p{margin:0;font-size:16px}
+.c-warn{border-top:3px solid var(--sky)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.cuts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch}
+.cuts .principle{margin:0;padding:18px 20px;border-radius:14px}
+.cuts p{font-size:16px}
+
+.ln{display:block;margin-bottom:5px}.ln:last-child{margin-bottom:0}
+.rail{border-left:2px solid var(--line-hi);margin:30px 0 26px 6px;padding-left:26px}
+.rail h3{border-top:0;padding-top:0;margin-top:30px;position:relative}
+.rail h3:first-child{margin-top:0}
+.rail h3::before{content:"";position:absolute;left:-34px;top:.42em;width:14px;height:14px;border-radius:50%;background:#E3A93B;box-shadow:0 0 0 4px var(--bg)}
+.rail p:last-child{margin-bottom:0}
+
+@media (max-width:820px){
+  .tiers,.cuts,.pair{grid-template-columns:1fr}
+  figure{overflow-x:auto}
+  figure svg{min-width:640px}
+}
+@media (max-width:760px){
+  .scroll{overflow:visible;border:0;background:none;border-radius:0}
+  table,table.src,table.wk,table.ms{min-width:0;display:block}
+  thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  tbody,tr,td{display:block}
+  tr{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:8px 16px;margin-bottom:10px}
+  tr.rec{border-color:#E3A93B;background:#FFF6E2}
+  td,tr:last-child td{border:0;padding:7px 0}
+  tr.rec td{background:none}
+  td[data-label]::before{content:attr(data-label);display:block;font:600 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+  td:first-child{font-size:16px}
+  td:first-child::before{display:none!important}
+  table.wk td:first-child::before,table.ms td:first-child::before{display:inline!important;margin-right:8px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div id="bar" aria-hidden="true"></div>
+  <div class="wrap">
+    <a class="logo" href="#top">TOYSTACK<span>.</span>STAGE&nbsp;1</a>
+    <div class="links" id="links">
+      <a href="#task1">Task 1</a>
+      <a href="#task2">Task 2</a>
+      <a href="#task3">Task 3</a>
+      <a href="#task4">Task 4</a>
+      <a href="#refs">AI use &amp; references</a>
+    </div>
+  </div>
+</nav>
+
+<!-- TITLE -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1>Stage 1 Literature Search: My Approach to the Six-Week Pilot</h1>
+    <div class="meta">
+      <span class="chip">Alisha Chaudhari</span>
+      <span class="chip">Product Manager / Client Implementation Partner take-home, Toystack AI</span>
+      <span class="chip">Nov 2026</span>
+    </div>
+    <div class="toc">
+      <a href="#task1"><span>TASK 1</span><b>Plan of Action for Stage 1 (Literature Search)</b></a>
+      <a href="#task2"><span>TASK 2</span><b>Six-Week Pilot Delivery Plan</b></a>
+      <a href="#task3"><span>TASK 3</span><b>Email to the Client's VP of Research</b></a>
+      <a href="#task4"><span>TASK 4</span><b>Scenario: Three Weeks In</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TASK 1 ================= -->
+<section class="light" id="task1">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Task 1</div>
+      <h2>Plan of Action for Stage 1 (Literature Search)</h2>
+    </div>
+    <div class="subnav"><a href="#s1-1"><span>1.1</span>The problem, and what we are proposing</a><a href="#s1-2"><span>1.2</span>Who uses it and what they see</a><a href="#s1-3"><span>1.3</span>Data sources</a><a href="#s1-4"><span>1.4</span>How it fits together</a><a href="#s1-5"><span>1.5</span>What we build first</a><a href="#s1-6"><span>1.6</span>Risks, assumptions and open questions</a></div>
+
+    <h3 id="s1-1"><span class="no">1.1</span>The problem, and what we are proposing</h3>
+    <p>Today, when a researcher picks a protein, they search databases and read through a large number of papers to find molecules that have been shown to act on it. It takes weeks, the result depends on who did the reading, and things get missed.</p>
+    <p>The VP wants this to be faster: "type in a protein and get the best molecules back". In the same call, they said they don't trust AI summaries and want their team to see the evidence and decide. I read those two statements together. The tool should not decide which molecule is best. It should do the slow part, finding and organising the evidence, and leave the judgement to the scientist.</p>
+    <div class="principle"><p><b>What we propose:</b> the researcher enters a protein and gets a shortlist of molecules. Next to each molecule is the evidence for it, with a link to the exact sentence or table it came from. The researcher reviews the list, keeps the good ones, and sends them on to the simulation stage.</p></div>
+    <p>The client calls this "protein–ligand matching", our engineers say "target–hit matching", and our sales deck says "AI-powered literature review". They describe the same job. I would use the client's term with the client and avoid "AI-powered literature review" in this pilot, because it sounds like the AI summaries the VP said they don't trust.</p>
+
+    <h3 id="s1-2"><span class="no">1.2</span>Who uses it and what they see</h3>
+    <p><b>Main user:</b> the client's Senior Scientist and one or two colleagues working on the pilot protein. <b>Also involved:</b> the VP (sponsor) and whoever runs the simulation stage. I haven't assumed Toystack already has a simulation tool; confirming who owns that step is a week-1 question.</p>
+    <p><b>What the researcher does:</b></p>
+    <ol class="journey">
+      <li><b>Types the protein name.</b> The tool shows the exact protein it found (for example, the human version, or a specific mutation) and asks them to confirm. Protein names are often ambiguous, and a wrong protein means wrong results.</li>
+      <li><b>Gets a shortlist.</b> Each row shows the molecule, how strongly it was reported to act on the protein, how many sources support it, how recent the evidence is, and whether it is already an approved drug. The Senior Scientist asked about repurposing approved drugs, and this flag covers that.</li>
+      <li><b>Clicks a molecule</b> to see each piece of evidence: the sentence or table row, the paper, and whether it came from a curated database or was found by the AI.</li>
+      <li><b>Marks each molecule</b> keep, reject or unsure, with a short note.</li>
+      <li><b>Exports the kept molecules</b> for the simulation stage.</li>
+    </ol>
+    <p><b>What counts as a good match.</b> I would sort results by how strong the evidence is, not by an AI score:</p>
+    <ul class="tiers">
+      <li class="t-strong"><b>Strong:</b> a paper or database reports a measured lab result for the molecule against this protein.</li>
+      <li class="t-medium"><b>Medium:</b> a paper says the molecule acts on the protein, but gives no number.</li>
+      <li class="t-weak"><b>Weak:</b> the two are only mentioned together. We keep these, but hide them by default.</li>
+    </ul>
+    <p>Lab results are only compared when they come from the same kind of test, because numbers from different tests aren't comparable. The scientist can see exactly why each molecule sits where it does.</p>
+    <div class="callout"><p><b>One honest limitation.</b> Chemistry papers often call a molecule "compound 12b" and only show its structure in a drawing. The first version can't read drawings, so these go to a separate "needs checking" list instead of being guessed.</p></div>
+    <p><b>Who does what.</b> Finding papers is automated. Pulling out the facts is done by AI, but every fact shows where it came from. Deciding whether the evidence is good enough, and whether a molecule is worth simulating, stays with the scientist.</p>
+    <p><b>What gets handed to simulation.</b> A file listing each kept molecule's chemical structure, its reported result, links to its evidence and the scientist's decision, plus a reference to the protein's 3D structure, which simulation needs. I wouldn't guess the format. In week 1, I would agree it with whoever runs the simulation step. If there is no simulation tool yet, we check the file against a standard chemistry file format that common simulation tools read.</p>
+
+    <h3 id="s1-3"><span class="no">1.3</span>Data sources</h3>
+    <p>Two notes decide this. Finance says data must be free or licensed for commercial use, with no budget for paid licences. Engineering wants to scrape everything and sort out licensing later. I would follow Finance. A US pharma client will ask where every result came from, and being free to read online is not the same as being free to use commercially. Each licence was checked on the source's own website on 3 November 2026 (links at the end), with AI help; our lawyer should confirm them before we rely on them.</p>
+    <div class="scroll">
+      <table class="src">
+        <thead><tr><th>Source</th><th>What we get, and why we need it</th><th>How we access it</th><th>Commercial use</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td class="f" data-label="Source">UniProt [1]</td><td data-label="What we get, and why we need it">The standard list of proteins and all their other names. Used to confirm the right protein and to search using every name.</td><td data-label="How we access it">Free API</td><td data-label="Commercial use">Yes, with credit (CC BY 4.0)</td><td data-label="When">Pilot</td></tr>
+          <tr><td class="f" data-label="Source">ChEMBL [2]</td><td data-label="What we get, and why we need it">Molecules with measured lab results against proteins, collected by experts from published papers, plus which ones are approved drugs. Our most reliable starting point.</td><td data-label="How we access it">Free API or download</td><td data-label="Commercial use">Yes, with credit (CC BY-SA 3.0). Data we pass on must keep the same licence, so the client export will carry that notice.</td><td data-label="When">Pilot (main source)</td></tr>
+          <tr><td class="f" data-label="Source">Europe PMC [3]</td><td data-label="What we get, and why we need it">Search across paper abstracts and free full-text papers, to find evidence ChEMBL hasn't collected yet.</td><td data-label="How we access it">Free API</td><td data-label="Commercial use">Depends on each paper's licence. The AI only reads full papers whose licence allows commercial use.</td><td data-label="When">Pilot</td></tr>
+          <tr><td class="f" data-label="Source">PMC Open Access [4]</td><td data-label="What we get, and why we need it">Full text of free papers in a structured format, so tables can be read properly.</td><td data-label="How we access it">Only NIH's approved routes; other bulk downloading isn't allowed</td><td data-label="Commercial use">Depends on each paper. The licence is stored with each paper and filtered as above.</td><td data-label="When">Pilot</td></tr>
+          <tr><td class="f" data-label="Source">PubMed [5]</td><td data-label="What we get, and why we need it">Titles and abstracts, to find relevant papers.</td><td data-label="How we access it">Free API</td><td data-label="Commercial use">Free to access, but NIH notes abstracts may be publisher-copyrighted and recommends legal advice before reuse. Search only until our lawyer confirms.</td><td data-label="When">Pilot (search only)</td></tr>
+          <tr><td class="f" data-label="Source">PubChem [6]</td><td data-label="What we get, and why we need it">Other names and structures of molecules, to recognise the same molecule under different names.</td><td data-label="How we access it">Free API</td><td data-label="Commercial use">Mostly free, but some contributors set their own terms. Used for name lookups only.</td><td data-label="When">Pilot</td></tr>
+          <tr><td class="f" data-label="Source">PDB, AlphaFold [7, 8]</td><td data-label="What we get, and why we need it">3D protein structures that simulation needs.</td><td data-label="How we access it">Free</td><td data-label="Commercial use">PDB: public domain (CC0). AlphaFold: yes, with credit (CC BY 4.0).</td><td data-label="When">Pilot (reference)</td></tr>
+          <tr><td class="f" data-label="Source">BindingDB [9]</td><td data-label="What we get, and why we need it">More measured binding results.</td><td data-label="How we access it">Free download</td><td data-label="Commercial use">Yes, with credit (CC BY). Rows copied from ChEMBL keep ChEMBL's licence.</td><td data-label="When">Only if time</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>Later phases:</b> patents through SureChEMBL [10] (CC BY 4.0); preprints from bioRxiv and medRxiv [11], where each author picks the licence, so only some can be used commercially; and citation and retraction information from OpenAlex [12] (CC0; free API up to a daily limit, then paid).</p>
+    <p><b>Not using:</b> <em>Google Scholar</em> has no official API, and Google's terms forbid automated searching [14]. <em>DrugBank</em>'s free version is for non-commercial use only, and commercial use needs a paid licence [13]; ChEMBL's approved-drug flag covers repurposing for the pilot. <em>Paywalled papers</em> can't be scraped. <em>Conference posters</em> have no reliable public source; the client's own posters can come in later with their internal documents.</p>
+    <div class="callout"><p><b>What I'm not sure about.</b> Two questions need a lawyer's answer by the end of week 1: can the AI read and quote short parts of copyrighted abstracts, and what does ChEMBL's "share-alike" condition mean if Toystack later sells this as a product? Until we have answers, we take the cautious option. If that means fewer results, we say so.</p></div>
+
+    <h3 id="s1-4"><span class="no">1.4</span>How it fits together</h3>
+    <figure><svg xmlns="http://www.w3.org/2000/svg" width="100%" role="img" aria-labelledby="dgm-t" viewBox="0 0 780 563"><title id="dgm-t">How the pilot fits together: public sources feed eight steps inside a separate pilot space, ending in export to Stage 2 simulation; client systems are a later phase.</title>
+<defs>
+ <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5B6573"/></marker>
+ <marker id="ao" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#C2611F"/></marker>
+</defs>
+<rect width="780" height="563" fill="#fff"/><rect x="8" y="32" width="196" height="360" rx="9" fill="#F3F6FA" stroke="#2F6DB5" stroke-width="2" /><text x="106" y="58" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#2F6DB5" text-anchor="middle" >Public sources</text><text x="106" y="79" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#5B6573" text-anchor="middle" >(licence checked for each)</text><rect x="24" y="96" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="117" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >UniProt</text><rect x="24" y="132" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="153" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >ChEMBL</text><rect x="24" y="168" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="189" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >Europe PMC</text><rect x="24" y="204" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="225" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >PMC Open Access</text><rect x="24" y="240" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="261" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >PubMed</text><rect x="24" y="276" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="297" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >PubChem</text><rect x="24" y="312" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="333" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >PDB / AlphaFold</text><rect x="24" y="348" width="164" height="29" rx="6" fill="#fff" stroke="#B8C7DA"/><text x="106" y="369" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#1b1b1b" text-anchor="middle" >BindingDB (if time)</text><line x1="204" y1="212" x2="226" y2="212" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="226" y="8" width="546" height="422" rx="9" fill="none" stroke="#1F3A5F" stroke-width="2" stroke-dasharray="7 5"/><text x="499" y="30" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#1F3A5F" text-anchor="middle" >Pilot: a separate space for this client; protein kept confidential</text><rect x="240" y="62" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="252" y="87" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >1  Confirm the protein</text><text x="252" y="112" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >the exact protein they mean</text><line x1="366" y1="124" x2="366" y2="148" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="240" y="150" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="252" y="175" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >2  Collect from sources</text><text x="252" y="200" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >databases and free papers</text><line x1="366" y1="212" x2="366" y2="236" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="240" y="238" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="252" y="263" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >3  Find relevant passages</text><text x="252" y="288" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >sentences and tables about it</text><line x1="366" y1="300" x2="366" y2="324" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="240" y="326" width="252" height="62" rx="9" fill="#FFF4EC" stroke="#C2611F" stroke-width="2" /><text x="252" y="351" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#C2611F" text-anchor="start" >4  AI pulls out the facts</text><text x="252" y="376" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >molecule, result + exact quote</text><rect x="510" y="62" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="522" y="87" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >5  Match molecule names</text><text x="522" y="112" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >different names, same molecule</text><line x1="636" y1="124" x2="636" y2="148" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="510" y="150" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="522" y="175" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >6  Store with its source</text><text x="522" y="200" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >every item keeps link + licence</text><line x1="636" y1="212" x2="636" y2="236" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="510" y="238" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="522" y="263" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >7  Shortlist + review</text><text x="522" y="288" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >scientist keeps or rejects</text><line x1="636" y1="300" x2="636" y2="324" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)" /><rect x="510" y="326" width="252" height="62" rx="9" fill="#EAF1FA" stroke="#2F6DB5" stroke-width="2" /><text x="522" y="351" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#1F3A5F" text-anchor="start" >8  Export</text><text x="522" y="376" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >kept molecules for simulation</text><path d="M 492 357 L 501 357 L 501 49 L 636 49 L 636 60" fill="none" stroke="#5B6573" stroke-width="2.2" marker-end="url(#a)"/><rect x="510" y="458" width="252" height="66" rx="9" fill="#E8F5F2" stroke="#16806F" stroke-width="2" /><text x="522" y="484" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#16806F" text-anchor="start" >Stage 2: Simulation</text><text x="522" y="510" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#333" text-anchor="start" >owner confirmed in week 1</text><line x1="636" y1="388" x2="636" y2="456" stroke="#16806F" stroke-width="2.2" marker-end="url(#a)" /><rect x="8" y="442" width="470" height="112" rx="9" fill="#FFF9F3" stroke="#C2611F" stroke-width="2" stroke-dasharray="7 5"/><text x="22" y="468" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#C2611F" text-anchor="start" >Client systems (later phase, not in pilot)</text><text x="22" y="493" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#1b1b1b" text-anchor="start" >Internal reports and posters are read by a tool</text><text x="22" y="515" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="400" fill="#1b1b1b" text-anchor="start" >running inside the client's own network.</text><text x="22" y="537" font-family="Calibri, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#1b1b1b" text-anchor="start" >Public data comes in; client data never goes out.</text></svg></figure>
+    <p>The researcher confirms the protein (1). We collect what is known about it from the databases and papers (2, 3). The AI reads the relevant passages and records the facts in a fixed form: molecule, result and the exact quote (4). If the quote can't be found word for word in the paper, the item is thrown out, so the AI can't invent evidence. It could still attach a real sentence to the wrong molecule, which is why we measure accuracy (Task 2). We then match different names for the same molecule (5), store every item with its source and licence (6), and show the shortlist for review (7) before export (8).</p>
+    <p>Each source plugs in separately. Adding a new one later, such as patents or the client's own reports, doesn't mean rebuilding everything. That is how this can grow towards "any lab, any protein".</p>
+    <div class="callout"><p><b>Keeping client data safe.</b> The pilot uses only public data, so no internal client documents are involved. I would still treat the client's choice of protein and their searches as confidential, because the protein a pharma company is working on is sensitive in itself. The pilot would run in a separate space for this client, open only to named users, with the AI model set up so it doesn't keep or learn from what we send it. If the client's IT team says even the protein name can't leave their network, we would need to run inside their systems, and that approval can take longer than six weeks. So I would ask this before we start. If needed, the team builds on a public example protein while the approval runs. Internal reports come in a later phase, processed inside the client's own systems: public data comes in, their data never goes out.</p></div>
+
+    <h3 id="s1-5"><span class="no">1.5</span>What we build first</h3>
+    <p><b>Week 1, before building.</b> Confirm the protein. Ask the Senior Scientist for 20–30 molecules they already know work on it (our "test list"). At least a third should be ones not yet in ChEMBL, for example from recent papers, so we are testing whether the AI finds anything new and not just whether ChEMBL works. Agree how we will measure success, agree the export format, and get the lawyer's answers.</p>
+    <div class="principle"><p><b>First build: one protein, start to finish.</b> Confirm the protein, pull ChEMBL results, search papers, run the AI with the quote check, show a simple shortlist, allow keep or reject, and export. By the end of week 2, a researcher should be able to type the protein and click from any result to its source. The screens will be rough, but the data will be real. I would build this thin version first because it answers the biggest unknown early: can the AI find real evidence beyond what databases already hold, accurately enough for scientists to trust it? Other sources can be added later.</p></div>
+    <p><b>Not in the first six weeks:</b> patents, preprints, internal documents, posters, searching many proteins at once, chat or AI summaries, any AI verdict on whether a molecule is a good drug, and a direct connection to a simulation system (a file is enough for now).</p>
+    <p><b>How we will know it works:</b> the five measures in Task 2, checked against the client's own test list.</p>
+
+    <h3 id="s1-6"><span class="no">1.6</span>Risks, assumptions and open questions</h3>
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Risk</th><th>Why it matters</th><th>What I would do</th></tr></thead>
+        <tbody>
+          <tr><td class="f" data-label="Risk">AI gets a fact wrong</td><td data-label="Why it matters">Scientists stop trusting the tool</td><td data-label="What I would do">Quote check; AI results clearly labelled; accuracy measured every week; the scientist decides.</td></tr>
+          <tr><td class="f" data-label="Risk">Molecules named only by number</td><td data-label="Why it matters">Missed or mismatched results</td><td data-label="What I would do">Separate "needs checking" list, included in the results.</td></tr>
+          <tr><td class="f" data-label="Risk">Licensing unclear</td><td data-label="Why it matters">Legal problem with the client</td><td data-label="What I would do">Cautious option until the lawyer answers in week 1.</td></tr>
+          <tr><td class="f" data-label="Risk">Key evidence is paywalled, in patents or internal reports</td><td data-label="Why it matters">Fewer results</td><td data-label="What I would do">Say so plainly. Misses on the test list show which sources to add next.</td></tr>
+          <tr><td class="f" data-label="Risk">Client IT approval takes longer than the pilot</td><td data-label="Why it matters">Delay</td><td data-label="What I would do">Ask before kickoff; build on a public example protein meanwhile.</td></tr>
+          <tr><td class="f" data-label="Risk">Protein not confirmed</td><td data-label="Why it matters">Nothing to measure against</td><td data-label="What I would do">Recommend a well-studied protein. Decide by day 5, or use an example agreed with the VP.</td></tr>
+          <tr><td class="f" data-label="Risk">New requests mid-pilot (patents, more proteins)</td><td data-label="Why it matters">Dates slip</td><td data-label="What I would do">New items go to phase 2 unless something of equal size comes out, with the VP's agreement.</td></tr>
+          <tr><td class="f" data-label="Risk">No clear owner for simulation</td><td data-label="Why it matters">Export can't be used</td><td data-label="What I would do">CTO names an owner in week 1.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pair"><div class="card"><p><b>Assumptions:</b> human proteins; papers in English; the Senior Scientist can give about 3 hours a week (around 18 hours in total); two testers for a day each in week 5; Toystack can set up the AI model so it keeps no data.</p></div>
+<div class="card"><p><b>Open questions:</b> which protein; is the protein name confidential; who runs simulation, and with which tool; does the client have journal subscriptions we could use inside their systems later?</p></div></div>
+  </div>
+</section>
+
+<!-- ================= TASK 2 ================= -->
+<section id="task2">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Task 2</div>
+      <h2>Six-Week Pilot Delivery Plan</h2>
+    </div>
+    <div class="subnav"><a href="#s2-1"><span>2.1</span>Week by week</a><a href="#s2-2"><span>2.2</span>What we depend on</a><a href="#s2-3"><span>2.3</span>How I will track it</a><a href="#s2-4"><span>2.4</span>How we will measure success</a><a href="#s2-5"><span>2.5</span>If we run short on time or people</a></div>
+    <p style="margin-top:22px"><b>Team:</b> me (PM), two AI/ML engineers (ML1, ML2), one backend engineer (BE), one frontend engineer (FE), and a part-time solution architect (SA), whose time I would book for weeks 1, 3 and 5. No extra people. The requests to the client (protein, test list, IT question) go out with my email before week 1, so we don't lose the first week waiting.</p>
+
+    <h3 id="s2-1"><span class="no">2.1</span>Week by week</h3>
+    <div class="scroll">
+      <table class="wk">
+        <thead><tr><th>Week</th><th>Goal</th><th>Who does what</th><th>Done when</th></tr></thead>
+        <tbody>
+          <tr><td class="f" data-label="Week">1</td><td class="f" data-label="Goal">Agree the plan</td><td data-label="Who does what"><span class="ln"><b>Me:</b> workshops with the VP and Senior Scientist (protein, test list, success measures, testers); legal questions.</span> <span class="ln"><b>SA, BE:</b> hosting with client IT; backup setup with a public example protein.</span> <span class="ln"><b>ML1, ML2:</b> test the AI on 20 papers.</span> <span class="ln"><b>FE:</b> rough screens shown to the scientist.</span> <span class="ln"><b>Me with simulation owner:</b> export format.</span></td><td data-label="Done when">VP signs a one-page pilot plan. Until then, engineers only do throwaway tests.</td></tr>
+          <tr><td class="f" data-label="Week">2</td><td class="f" data-label="Goal">First working version</td><td data-label="Who does what"><span class="ln"><b>BE:</b> protein and ChEMBL connections, storage.</span> <span class="ln"><b>ML1:</b> paper search, AI extraction, quote check.</span> <span class="ln"><b>ML2:</b> name matching; 50 hand-checked items to measure accuracy.</span> <span class="ln"><b>FE:</b> search and shortlist screens.</span></td><td data-label="Done when">Works end to end for one protein; first accuracy number.</td></tr>
+          <tr><td class="f" data-label="Week">3</td><td class="f" data-label="Goal">Add full papers</td><td data-label="Who does what"><span class="ln"><b>BE, ML1:</b> full text of free papers.</span> <span class="ln"><b>ML2:</b> sorting; first check against the test list.</span> <span class="ln"><b>BE:</b> export.</span> <span class="ln"><b>FE:</b> evidence screen.</span> <span class="ln"><b>SA:</b> move to the pilot environment.</span></td><td data-label="Done when">Simulation owner opens a sample export; Senior Scientist sees a 30-minute preview.</td></tr>
+          <tr><td class="f" data-label="Week">4</td><td class="f" data-label="Goal">Review and polish</td><td data-label="Who does what"><span class="ln"><b>FE:</b> keep/reject and export screens.</span> <span class="ln"><b>ML1, ML2:</b> fix the most common AI mistakes.</span> <span class="ln"><b>BE:</b> BindingDB only if week 3 is on track.</span> <span class="ln"><b>Me:</b> test scripts for the client.</span></td><td data-label="Done when">Accuracy at least 85% on 100 internal items; no serious bugs; features frozen Thursday.</td></tr>
+          <tr><td class="f" data-label="Week">5</td><td class="f" data-label="Goal">Client testing</td><td data-label="Who does what"><span class="ln">Two or three client scientists use it on real tasks and score 150 random AI results.</span> <span class="ln">I time a shortlist session.</span> <span class="ln">Bugs fixed daily.</span></td><td data-label="Done when">All five measures recorded; serious bugs fixed.</td></tr>
+          <tr><td class="f" data-label="Week">6</td><td class="f" data-label="Goal">Demo and sign-off</td><td data-label="Who does what"><span class="ln"><b>Mon–Tue:</b> fixes only (buffer).</span> <span class="ln"><b>Wed:</b> final numbers and rehearsal.</span> <span class="ln"><b>Thu:</b> demo.</span> <span class="ln"><b>Fri:</b> sign-off and phase 2 proposal.</span></td><td data-label="Done when">VP signs off against the agreed measures.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 id="s2-2"><span class="no">2.2</span>What we depend on</h3>
+    <ul class="tiers plain">
+      <li><b>Client:</b> protein and test list by day 5; about 3 hours a week from the Senior Scientist; two testers in week 5; an answer from IT on hosting before we start.</li>
+      <li><b>Data:</b> enough free full-text papers exist for the chosen protein. We check this in week 1.</li>
+      <li><b>Team:</b> the two ML engineers are our tightest resource, so they get no side work. The backend engineer is fully loaded in weeks 2–3, which is why BindingDB is optional. The architect's days are booked in advance.</li>
+    </ul>
+
+    <h3 id="s2-3"><span class="no">2.3</span>How I will track it</h3>
+    <p>Weekly sprints with a Friday demo; the Senior Scientist joins from week 2. A 15-minute stand-up each morning. One shared list of risks, open issues and client dependencies, each with an owner and a date. A Friday email to the VP: on track or at risk, what's done, latest numbers, decisions needed. A short call with the VP and CTO every two weeks.</p>
+    <div class="callout"><p><b>Early warning signs:</b> the first version isn't working by the end of week 2; accuracy is below 80% in week 3; a client input is more than two days late; work is two days behind plan. If any of these happens, I tell the CTO the same day and the VP within 24 hours, with options.</p></div>
+
+    <h3 id="s2-4"><span class="no">2.4</span>How we will measure success</h3>
+    <p>These are my starting proposals. We agree and freeze them with the VP in week 1, before building.</p>
+    <div class="scroll">
+      <table class="ms">
+        <thead><tr><th>#</th><th>Measure</th><th>Target</th><th>How we measure it</th></tr></thead>
+        <tbody>
+          <tr><td class="f" data-label="#">1</td><td class="f" data-label="Measure">Finds what the scientists already know</td><td data-label="Target">(a) <b>80%</b> of test-list molecules that are in ChEMBL, and (b) <b>50%</b> of those that aren't, shown as a count (for example, 5 of 10). (b) is lower because the AI only reads free papers. The group is small, so one molecule moves it a lot: it is a signal, not proof.</td><td data-label="How we measure it">Run against the test list in weeks 3 and 6. We also count new molecules outside ChEMBL that the scientists accept.</td></tr>
+          <tr><td class="f" data-label="#">2</td><td class="f" data-label="Measure">AI accuracy</td><td data-label="Target">At least <b>90%</b> of 150 randomly chosen AI results fully correct: right molecule, protein, number and unit.</td><td data-label="How we measure it">Two client scientists split the 150, with 30 scored by both to check they agree; the Senior Scientist settles disagreements</td></tr>
+          <tr><td class="f" data-label="#">3</td><td class="f" data-label="Measure">Every result can be traced</td><td data-label="Target"><b>100%</b> link to the exact source passage</td><td data-label="How we measure it">Automatic check, plus 30 checked by hand. The quote check makes this easy to pass, so we also report how many items it threw out, and ML2 checks 30 of those for real evidence we lost.</td></tr>
+          <tr><td class="f" data-label="#">4</td><td class="f" data-label="Measure">Saves time and is useful</td><td data-label="Target">A reviewed <b>top-20</b> shortlist in <b>one working day or less</b>; at least <b>2 of 3 testers</b> would use it for their next protein.</td><td data-label="How we measure it">Timed session and a three-question survey. We also note how long scientists estimate the manual way takes.</td></tr>
+          <tr><td class="f" data-label="#">5</td><td class="f" data-label="Measure">Ready for simulation</td><td data-label="Target"><b>100%</b> of exported molecules pass the agreed file checks without manual fixing</td><td data-label="How we measure it">Simulation owner tests the file in weeks 3 and 6</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><b>Why 150 results for accuracy:</b> it gives a 90% score a margin of about 5 points either way, without taking too much of the scientists' time.</p>
+    <p><b>Demo and sign-off.</b> At the demo, a client scientist runs the tool live, not us. Then we show all five numbers, including any we missed. FE and I test the screens, ML2 runs the accuracy checks, and the client scientists do the final testing on real work. The VP signs off against the agreed measures, and the CTO signs off internally. If we miss a target, we say so, with the reason and a plan to fix it.</p>
+
+    <h3 id="s2-5"><span class="no">2.5</span>If we run short on time or people</h3>
+    <div class="cuts"><div class="principle"><p><b>Never cut:</b> links to sources, accuracy checks, the one-protein end-to-end flow, and full-text papers (measure 1b depends on them).</p></div>
+<div class="card c-warn"><p><b>Cut first, in this order:</b> BindingDB, then screen polish and extra filters, then the approved-drug filter.</p></div>
+<div class="card"><p><b>Phase 2 regardless:</b> patents, preprints, internal documents, several proteins at once, retraction information, user roles, and a direct connection to simulation.</p></div></div>
+  </div>
+</section>
+
+<!-- ================= TASK 3 ================= -->
+<section class="light" id="task3">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Task 3</div>
+      <h2>Email to the Client's VP of Research</h2>
+    </div>
+    <div class="email">
+      <div class="bar"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+      <div class="subj"><b>Subject:</b> Our six-week pilot: what we will deliver, and what we need from you</div>
+      <div class="bd">
+        <p>Dear Dr [Name],</p>
+        <p>Thank you for your team's time last week. Your scientists lose weeks reading papers to find molecules worth pursuing, and a faster process only helps if they can trust what it shows them. Your team wants to see the evidence and decide, not read an AI summary. Our plan is built around that.</p>
+        <p>In six weeks, we will deliver a working pilot for one protein. A scientist enters the protein and gets a shortlist of molecules, each with its evidence (a reported test result or a statement in a paper) linked to the exact passage. Your team keeps or rejects each one, and the kept molecules are exported for the simulation stage. We will use public sources only, subject to a licence check, and will flag approved drugs to help with repurposing.</p>
+        <p>To keep it focused, the pilot won't include patents, preprints, conference posters or your internal reports. We will propose a way to add your reports later without your data leaving your environment. The pilot also won't judge which molecules will work; that stays with your scientists.</p>
+        <p>We will agree success measures with you up front. To get started, could you help with three things, ideally a week before kickoff:</p>
+        <ol>
+          <li>The pilot protein, plus 20 to 30 molecules your team knows work on it, including some recent ones.</li>
+          <li>A scientist who can test the pilot and sign off the results with you.</li>
+          <li>A call with your IT team about hosting, especially whether the protein name must stay inside your network.</li>
+        </ol>
+        <p>I will share a one-page pilot plan for sign-off in week one, and a short update every Friday.</p>
+        <p class="sig">Looking forward to working with you,</p>
+        <p class="sig">Alisha Chaudhari</p>
+        <p class="sig">Product Manager, Toystack AI</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TASK 4 ================= -->
+<section id="task4">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Task 4</div>
+      <h2>Scenario: Three Weeks In</h2>
+    </div>
+    <p style="margin-top:22px">It is the end of week 3. The backend engineer tells me that getting full-text papers working properly will take two more weeks. In my plan, that is the source that matters most: without full papers, we will probably miss measure 1b (finding molecules not already in ChEMBL), because abstracts often leave out the lab results.</p>
+
+    <div class="rail">
+    <h3>What I check first (same day)</h3>
+    <p>I sit down with BE, ML1 and the architect and go through the estimate task by task: what's done, what's left, and what we don't know yet. Is the two weeks known work, or uncertainty, for example reading tables we haven't tested yet? Is something outside the team blocking us, like download limits or access? I ask the architect for a separate estimate, and ML2 runs measure 1 on what we have today, so I know the real gap. Search, ChEMBL results, the review screens and export don't depend on full papers, so the rest of the plan is safe.</p>
+
+    <h3>How I speak with engineering</h3>
+    <p>I separate what the demo needs from what the finished product needs. The demo needs real full-text papers for one protein. The finished product needs a pipeline that updates automatically. So I ask: can we load the free papers for the pilot protein once, through the same connection, and build the automatic version after the pilot? The team checks how many papers that is the same day. If it is about a week of work, I fund it by dropping BindingDB and screen polish, which were already first on my cut list. I am also clear about what we won't do: skip the quote check, skip accuracy testing, use unlicensed sources, or present a one-time load as a live connection.</p>
+
+    <h3>What I discuss with the CTO</h3>
+    <p>The CTO wants to cut scope, and I agree, but I want to cut the right thing. My proposal: the automatic pipeline moves out of the pilot, and full papers for the pilot protein stay in. That is a real reduction, it protects the result the client cares about most, and we pay for it from the cut list. We also agree the fallback if the one-time load fails: curated data plus abstracts. Then we go to the client together with one recommendation.</p>
+    </div>
+
+    <div class="scroll">
+      <table>
+        <thead><tr><th>Option for the client</th><th>What they get by the demo</th><th>Downside</th></tr></thead>
+        <tbody>
+          <tr><td class="f" data-label="Option for the client">A. Keep the date, no full papers</td><td data-label="What they get by the demo">Database results and abstracts; full papers two weeks later</td><td data-label="Downside">Likely to miss measure 1b; shows less of what the AI adds</td></tr>
+          <tr class="rec"><td class="f" data-label="Option for the client">B. Keep the date, one-time load (recommended)</td><td data-label="What they get by the demo">Real full papers for the pilot protein; automatic updates two weeks after the demo</td><td data-label="Downside">Not automatic yet, and we say so; some risk, with A as the backup</td></tr>
+          <tr><td class="f" data-label="Option for the client">C. Move the date two weeks</td><td data-label="What they get by the demo">Everything as planned</td><td data-label="Downside">The VP has already said no, and the demo is booked</td></tr>
+          <tr><td class="f" data-label="Option for the client">D. Add an engineer</td><td data-label="What they get by the demo">Possibly everything</td><td data-label="Downside">Three weeks is too short to bring someone new up to speed</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="principle"><p><b>My recommendation is B,</b> with A agreed in advance as the backup. We decide on Friday of week 4: if the load is done and AI accuracy on it is at least 85%, we go with B. The VP keeps the date, the CTO gets a smaller scope, and the demo shows real results.</p></div>
+
+    <h3>Protecting the date without false promises</h3>
+    <p>I call the VP within 24 hours rather than waiting for the Friday email. I freeze new requests until the demo, check the load every day, and rehearse with the Senior Scientist in week 5. At the demo, we say plainly what is live, what was loaded once (with the date and number of papers), and when the automatic version arrives. I brief the VP before the senior management session so nothing surprises them in front of their leadership, and we report every measure as it is, even if one falls short.</p>
+  </div>
+</section>
+
+<!-- ================= AI USE + REFERENCES ================= -->
+<section class="light" id="refs">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">AI use &amp; references</div>
+      <h2>How I used AI</h2>
+    </div>
+    <p style="margin-top:22px">I used Claude (Anthropic) to find and check the official licence page for each data source, to suggest structure, to draft and simplify the wording, to draft the diagram, and to review the draft critically. I reviewed the decisions, priorities, measures and recommendations, I take responsibility for them, and I am ready to explain each one.</p>
+
+    <h3>References (checked 3 November 2026)</h3>
+    <ol class="refs">
+      <li><span>UniProt licence: <a href="https://www.uniprot.org/help/license" target="_blank" rel="noopener">https://www.uniprot.org/help/license</a></span></li>
+      <li><span>ChEMBL licence: <a href="https://chembl.gitbook.io/chembl-interface-documentation/frequently-asked-questions/general-questions" target="_blank" rel="noopener">https://chembl.gitbook.io/chembl-interface-documentation/frequently-asked-questions/general-questions</a></span></li>
+      <li><span>Europe PMC open access: <a href="https://europepmc.org/downloads/openaccess" target="_blank" rel="noopener">https://europepmc.org/downloads/openaccess</a></span></li>
+      <li><span>PMC Open Access subset: <a href="https://pmc.ncbi.nlm.nih.gov/tools/openftlist/" target="_blank" rel="noopener">https://pmc.ncbi.nlm.nih.gov/tools/openftlist/</a></span></li>
+      <li><span>NLM (PubMed) data terms: <a href="https://www.nlm.nih.gov/databases/download.html" target="_blank" rel="noopener">https://www.nlm.nih.gov/databases/download.html</a></span></li>
+      <li><span>PubChem sources and licences: <a href="https://pubchem.ncbi.nlm.nih.gov/sources/" target="_blank" rel="noopener">https://pubchem.ncbi.nlm.nih.gov/sources/</a></span></li>
+      <li><span>wwPDB usage policy: <a href="https://www.wwpdb.org/about/usage-policies" target="_blank" rel="noopener">https://www.wwpdb.org/about/usage-policies</a></span></li>
+      <li><span>AlphaFold DB licence: <a href="https://alphafold.ebi.ac.uk/" target="_blank" rel="noopener">https://alphafold.ebi.ac.uk/</a></span></li>
+      <li><span>BindingDB: <a href="https://www.bindingdb.org/rwd/bind/info.jsp" target="_blank" rel="noopener">https://www.bindingdb.org/rwd/bind/info.jsp</a></span></li>
+      <li><span>SureChEMBL licence: <a href="https://chembl.gitbook.io/surechembl/faq" target="_blank" rel="noopener">https://chembl.gitbook.io/surechembl/faq</a></span></li>
+      <li><span>bioRxiv licences: <a href="https://www.biorxiv.org/about/FAQ" target="_blank" rel="noopener">https://www.biorxiv.org/about/FAQ</a></span></li>
+      <li><span>OpenAlex licence and pricing: <a href="https://help.openalex.org/access/pricing/" target="_blank" rel="noopener">https://help.openalex.org/access/pricing/</a></span></li>
+      <li><span>DrugBank licensing: <a href="https://dev.drugbank.com/guides/faqs" target="_blank" rel="noopener">https://dev.drugbank.com/guides/faqs</a></span></li>
+      <li><span>Google Terms of Service: <a href="https://policies.google.com/terms" target="_blank" rel="noopener">https://policies.google.com/terms</a></span></li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Alisha Chaudhari  |  Product Manager / Client Implementation Partner take-home, Toystack AI  |  Nov 2026</p>
+  </div>
+</footer>
+
+<script>
+// scrollspy for the pill nav
+const links = [...document.querySelectorAll('#links a')];
+const io = new IntersectionObserver(es => es.forEach(en => {
+  if (en.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id));
+}), {rootMargin:'-45% 0px -50% 0px'});
+['task1','task2','task3','task4','refs'].forEach(id => io.observe(document.getElementById(id)));
+
+// reading progress
+const bar = document.getElementById('bar');
+const onScroll = () => { const d = document.documentElement; bar.style.transform = 'scaleX(' + (d.scrollTop / Math.max(1, d.scrollHeight - d.clientHeight)) + ')'; };
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+</script>
+</body>
+</html>

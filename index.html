@@ -192,6 +192,21 @@ figure svg{max-width:860px;margin:0 auto}
 .summary-h{font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .summary ul{margin:0;padding-left:20px;max-width:none}
 .summary li{margin:5px 0;font-size:16px}
+.dd .menu{display:none}
+.links{align-items:center}
+.dd{display:flex;flex:none}
+@media (min-width:821px){
+  .links{overflow:visible}
+  .dd{position:relative;display:flex}
+  .dd > a::after{content:"";display:inline-block;width:6px;height:6px;margin-left:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-3px) rotate(45deg);opacity:.7}
+  .dd .menu{position:absolute;top:100%;left:0;padding-top:10px;z-index:30}
+  .dd:nth-child(n+3) .menu{left:auto;right:0}
+  .dd:hover .menu,.dd:focus-within .menu{display:block}
+  .menu .box{background:#1F242B;border:1px solid #4A5360;border-radius:12px;padding:6px;box-shadow:0 18px 40px -16px rgba(0,0,0,.7);min-width:280px}
+  .links .menu a{display:flex;gap:10px;align-items:baseline;border:0;border-radius:8px;padding:9px 12px;color:#D9DCE1;font-weight:500;background:none;white-space:nowrap}
+  .links .menu a:hover,.links .menu a:focus-visible{background:#2A3038;color:#F5F4EF;outline:none}
+  .menu a span{color:#E3A93B;font-weight:700;min-width:16px}
+}
 </style>
 </head>
 <body>
@@ -201,10 +216,10 @@ figure svg{max-width:860px;margin:0 auto}
   <div class="wrap">
     <a class="logo" href="#top">TOYSTACK<span>.</span>STAGE&nbsp;1</a>
     <div class="links" id="links">
-      <a href="#task1">Task 1</a>
-      <a href="#task2">Task 2</a>
+      <div class="dd"><a href="#task1">Task 1</a><div class="menu"><div class="box"><a href="#task1-1"><span>1.</span>Scope Defined</a><a href="#task1-2"><span>2.</span>Data Sources</a><a href="#task1-3"><span>3.</span>Integration Structure</a><a href="#task1-4"><span>4.</span>The 1st Step</a><a href="#task1-5"><span>5.</span>Assumptions, Risks &amp; Open Questions</a></div></div></div>
+      <div class="dd"><a href="#task2">Task 2</a><div class="menu"><div class="box"><a href="#task2-1"><span>1.</span>Milestones &amp; Team</a><a href="#task2-2"><span>2.</span>Dependencies &amp; Risks</a><a href="#task2-3"><span>3.</span>Tracking</a><a href="#task2-4"><span>4.</span>Success &amp; Acceptance</a><a href="#task2-5"><span>5.</span>Priorities</a></div></div></div>
       <a href="#task3">Task 3</a>
-      <a href="#task4">Task 4</a>
+      <div class="dd"><a href="#task4">Task 4</a><div class="menu"><div class="box"><a href="#task4-1"><span>1.</span>What I would do in the next 24 hours</a><a href="#task4-2"><span>2.</span>How I would work with engineering</a><a href="#task4-3"><span>3.</span>Options I would present to the client</a><a href="#task4-4"><span>4.</span>Protecting the date without hurting credibility</a></div></div></div>
       <a href="#refs">AI use &amp; references</a>
     </div>
   </div>
@@ -392,7 +407,8 @@ figure svg{max-width:860px;margin:0 auto}
 </footer>
 
 <script>
-const links = [...document.querySelectorAll('#links a')];
+const links = [...document.querySelectorAll('#links > a, #links .dd > a')];
+document.querySelectorAll('.menu a').forEach(a => a.addEventListener('click', () => a.blur()));
 const io = new IntersectionObserver(es => es.forEach(en => {
   if (en.isIntersecting) links.forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + en.target.id));
 }), {rootMargin:'-45% 0px -50% 0px'});
